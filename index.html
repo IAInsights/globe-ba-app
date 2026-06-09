@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Globe BA Report</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f5f3;
+      --surface: #ffffff;
+      --border: rgba(0,0,0,0.1);
+      --border-md: rgba(0,0,0,0.18);
+      --text-primary: #1a1a18;
+      --text-secondary: #6b6b67;
+      --text-hint: #9b9b96;
+      --accent: #1a1a18;
+      --accent-fg: #ffffff;
+      --info-bg: #e6f1fb;
+      --info-text: #185fa5;
+      --success-bg: #eaf3de;
+      --success-text: #3b6d11;
+      --danger-bg: #fcebeb;
+      --danger-text: #a32d2d;
+      --warn-bg: #faeeda;
+      --warn-text: #854f0b;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1a;
+        --surface: #242422;
+        --border: rgba(255,255,255,0.1);
+        --border-md: rgba(255,255,255,0.18);
+        --text-primary: #f0efea;
+        --text-secondary: #9b9b96;
+        --text-hint: #6b6b67;
+        --accent: #f0efea;
+        --accent-fg: #1a1a18;
+        --info-bg: #042c53;
+        --info-text: #85b7eb;
+        --success-bg: #173404;
+        --success-text: #97c459;
+        --danger-bg: #501313;
+        --danger-text: #f09595;
+        --warn-bg: #412402;
+        --warn-text: #ef9f27;
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding: 0 0 3rem;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 0.5px solid var(--border);
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header .logo {
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    header .logo i {
+      color: var(--accent-fg);
+      font-size: 16px;
+    }
+
+    header h1 {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    header span {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.25rem;
+      margin-bottom: 12px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+
+    .field { margin-bottom: 14px; }
+    .field:last-child { margin-bottom: 0; }
+
+    .field label {
+      display: block;
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 5px;
+    }
+
+    select, input[type="date"], textarea {
+      width: 100%;
+      padding: 9px 12px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text-primary);
+      background: var(--surface);
+      border: 0.5px solid var(--border-md);
+      border-radius: var(--radius-md);
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    select:focus, input[type="date"]:focus, textarea:focus {
+      border-color: var(--text-secondary);
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+    }
+
+    textarea {
+      height: 80px;
+      resize: none;
+      line-height: 1.5;
+    }
+
+    .select-wrap { position: relative; }
+    .select-wrap::after {
+      content: '';
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0; height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 5px solid var(--text-secondary);
+      pointer-events: none;
+    }
+
+    .loading-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      font-size: 13px;
+      padding: 9px 12px;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+
+    .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--text-secondary);
+      animation: pulse 1.2s infinite;
+    }
+
+    @keyframes pulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 8px;
+    }
+
+    .status-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 8px;
+      border: 0.5px solid var(--border-md);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      color: var(--text-primary);
+      font-size: 13px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.12s, border-color 0.12s;
+    }
+
+    .status-btn:hover { background: var(--bg); }
+
+    .status-btn.active {
+      background: var(--info-bg);
+      color: var(--info-text);
+      border-color: transparent;
+      font-weight: 500;
+    }
+
+    .toast {
+      display: none;
+      border-radius: var(--radius-md);
+      padding: 11px 14px;
+      font-size: 13px;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .toast.success { display: block; background: var(--success-bg); color: var(--success-text); }
+    .toast.error   { display: block; background: var(--danger-bg);  color: var(--danger-text); }
+    .toast.warn    { display: block; background: var(--warn-bg);    color: var(--warn-text); }
+
+    .submit-btn {
+      width: 100%;
+      padding: 13px;
+      border-radius: var(--radius-md);
+      border: none;
+      background: var(--accent);
+      color: var(--accent-fg);
+      font-size: 14px;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: opacity 0.15s;
+    }
+
+    .submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .submit-btn:not(:disabled):hover { opacity: 0.85; }
+
+    .err-text {
+      font-size: 12px;
+      color: var(--danger-text);
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><i class="ti ti-file-report"></i></div>
+  <div>
+    <h1>Globe BA Report</h1>
+    <span>Daily Activity Report</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+  <div class="card">
+    <div class="section-label">Contexte</div>
+
+    <div class="field">
+      <label for="promoter-select">Promoteur</label>
+      <div id="promoter-loading" class="loading-row"><div class="dot"></div> Chargement...</div>
+      <div class="select-wrap" id="promoter-wrap" style="display:none">
+        <select id="promoter-select"><option value="">— Sélectionner —</option></select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="store-select">Store</label>
+      <div id="store-loading" class="loading-row"><div class="dot"></div> Chargement...</div>
+      <div class="select-wrap" id="store-wrap" style="display:none">
+        <select id="store-select"><option value="">— Sélectionner —</option></select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="brand-select">Brand</label>
+      <div id="brand-loading" class="loading-row"><div class="dot"></div> Chargement...</div>
+      <div class="select-wrap" id="brand-wrap" style="display:none">
+        <select id="brand-select"><option value="">— Sélectionner —</option></select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="report-date">Date du rapport</label>
+      <input type="date" id="report-date" />
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-label">Statut</div>
+    <div class="status-grid">
+      <button class="status-btn active" data-val="present" onclick="selectStatus(this)">
+        <i class="ti ti-check" aria-hidden="true"></i> Présent
+      </button>
+      <button class="status-btn" data-val="absent" onclick="selectStatus(this)">
+        <i class="ti ti-x" aria-hidden="true"></i> Absent
+      </button>
+      <button class="status-btn" data-val="late" onclick="selectStatus(this)">
+        <i class="ti ti-clock" aria-hidden="true"></i> Retard
+      </button>
+      <button class="status-btn" data-val="training" onclick="selectStatus(this)">
+        <i class="ti ti-school" aria-hidden="true"></i> Formation
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-label">Commentaires</div>
+    <div class="field">
+      <textarea id="comments" placeholder="Observations du jour..."></textarea>
+    </div>
+  </div>
+
+  <button class="submit-btn" id="submit-btn" onclick="submitReport()">
+    <i class="ti ti-send" aria-hidden="true"></i>
+    Soumettre le rapport
+  </button>
+
+</div>
+
+<script>
+  const SUPABASE_URL = 'https://qooytgsjjzvkqaumoqmw.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFvb3l0Z3Nqanp2a3FhdW1vcW13Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjUzNjM0ODMsImV4cCI6MjA0MDkzOTQ4M30.Oai2A8Qii0aOfD91NFwHsNq3Tgq1yFHwih-GRFnsEC0';
+  const HEADERS = {
+    'apikey': SUPABASE_KEY,
+    'Authorization': 'Bearer ' + SUPABASE_KEY,
+    'Content-Type': 'application/json'
+  };
+
+  let selectedStatus = 'present';
+
+  async function sbFetch(path) {
+    const r = await fetch(SUPABASE_URL + '/rest/v1/' + path, { headers: HEADERS });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  }
+
+  async function loadDropdown(path, selId, loadId, wrapId, valFn, labelFn) {
+    try {
+      const data = await sbFetch(path);
+      const sel = document.getElementById(selId);
+      (data || []).forEach(row => {
+        const o = document.createElement('option');
+        o.value = valFn(row);
+        o.textContent = labelFn(row);
+        sel.appendChild(o);
+      });
+      document.getElementById(loadId).style.display = 'none';
+      document.getElementById(wrapId).style.display = 'block';
+    } catch(e) {
+      document.getElementById(loadId).innerHTML =
+        '<span style="color:var(--danger-text);font-size:13px"><i class="ti ti-alert-circle"></i> Erreur de chargement</span>';
+    }
+  }
+
+  function selectStatus(btn) {
+    document.querySelectorAll('.status-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedStatus = btn.dataset.val;
+  }
+
+  function showToast(msg, type) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast ' + type;
+    setTimeout(() => { t.className = 'toast'; }, 4500);
+  }
+
+  async function checkDuplicate(promoter_id, store_id, report_date) {
+    const data = await sbFetch(
+      'ba_reports?promoter_id=eq.' + promoter_id +
+      '&store_id=eq.' + store_id +
+      '&report_date=eq.' + report_date +
+      '&select=id&limit=1'
+    );
+    return data && data.length > 0;
+  }
+
+  async function submitReport() {
+    const btn = document.getElementById('submit-btn');
+    const promoter = document.getElementById('promoter-select').value;
+    const store    = document.getElementById('store-select').value;
+    const brand    = document.getElementById('brand-select').value;
+    const date     = document.getElementById('report-date').value;
+    const comments = document.getElementById('comments').value;
+
+    if (!promoter || !store || !brand || !date) {
+      showToast('Remplis tous les champs obligatoires.', 'error');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.innerHTML = '<i class="ti ti-loader-2" style="animation:spin 1s linear infinite"></i> Vérification...';
+
+    try {
+      const isDuplicate = await checkDuplicate(promoter, store, date);
+      if (isDuplicate) {
+        showToast('Un rapport existe déjà pour ce promoteur / store / date.', 'warn');
+        btn.disabled = false;
+        btn.innerHTML = '<i class="ti ti-send"></i> Soumettre le rapport';
+        return;
+      }
+
+      btn.innerHTML = '<i class="ti ti-loader-2" style="animation:spin 1s linear infinite"></i> Envoi...';
+
+      const payload = {
+        promoter_id: parseInt(promoter),
+        store_id:    parseInt(store),
+        brand_guid:  brand,
+        report_date: date,
+        status:      selectedStatus,
+        comments:    comments || null,
+        created_at:  new Date().toISOString()
+      };
+
+      const r = await fetch(SUPABASE_URL + '/rest/v1/ba_reports', {
+        method:  'POST',
+        headers: { ...HEADERS, 'Prefer': 'return=minimal' },
+        body:    JSON.stringify(payload)
+      });
+
+      if (r.ok) {
+        showToast('Rapport soumis avec succès ✓', 'success');
+        document.getElementById('comments').value = '';
+        document.getElementById('promoter-select').value = '';
+        document.getElementById('store-select').value = '';
+        document.getElementById('brand-select').value = '';
+        document.getElementById('report-date').value = new Date().toISOString().split('T')[0];
+        document.querySelectorAll('.status-btn').forEach(b => b.classList.remove('active'));
+        document.querySelector('[data-val="present"]').classList.add('active');
+        selectedStatus = 'present';
+      } else {
+        const err = await r.json();
+        showToast('Erreur : ' + (err.message || r.status), 'error');
+      }
+    } catch(e) {
+      showToast('Erreur réseau — vérifie ta connexion.', 'error');
+    }
+
+    btn.disabled = false;
+    btn.innerHTML = '<i class="ti ti-send"></i> Soumettre le rapport';
+  }
+
+  const style = document.createElement('style');
+  style.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+  document.head.appendChild(style);
+
+  document.getElementById('report-date').value = new Date().toISOString().split('T')[0];
+
+  loadDropdown(
+    'GI_promoters?select=id,full_name&Active=eq.true&order=full_name.asc&limit=300',
+    'promoter-select', 'promoter-loading', 'promoter-wrap',
+    r => r.id, r => r.full_name || '—'
+  );
+  loadDropdown(
+    'GI_stores?select=id,store&visible=eq.true&order=store.asc&limit=300',
+    'store-select', 'store-loading', 'store-wrap',
+    r => r.id, r => r.store || '—'
+  );
+  loadDropdown(
+    'GI_brands?select=guid,brand&visible=eq.true&order=brand.asc&limit=200',
+    'brand-select', 'brand-loading', 'brand-wrap',
+    r => r.guid, r => r.brand || '—'
+  );
+</script>
+
+</body>
+</html>
