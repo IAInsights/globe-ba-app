@@ -25,6 +25,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .screen-title{font-size:18px;font-weight:600}
 .step-label{font-size:12px;color:var(--muted);margin-left:auto;white-space:nowrap}
 .card{background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:12px}
+.welcome-card{background:var(--accent-light);border:0.5px solid var(--accent);border-radius:var(--radius);padding:12px 14px;margin-bottom:14px}
+.welcome-name{font-size:16px;font-weight:700;color:var(--accent)}
+.welcome-company{font-size:12px;color:var(--accent-dark);margin-top:2px;font-weight:500}
 .card-label{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
 .field{margin-bottom:12px}
 .field:last-child{margin-bottom:0}
@@ -49,24 +52,48 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .zone-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .zone-title{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
 .zone-delete{background:none;border:none;color:var(--muted);cursor:pointer;font-size:20px;line-height:1;padding:0}
-.gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:10px}
-.product-card{background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:10px}
-.product-name{font-size:11px;font-weight:600;color:var(--text);margin-bottom:6px;line-height:1.3;min-height:28px}
-.ref-price{font-size:10px;color:var(--muted);margin-bottom:5px}
-.ref-price span{color:var(--accent);font-weight:600}
-.price-row{display:flex;gap:4px;align-items:center;margin-bottom:4px}
-.price-input{flex:1;height:34px;border:0.5px solid var(--border);border-radius:6px;padding:0 6px;font-size:13px;background:var(--bg);outline:none;color:var(--text)}
+/* SEARCH BAR */
+.survey-search{width:100%;height:38px;border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:0 12px;font-size:14px;background:var(--bg);outline:none;font-family:inherit;margin-bottom:10px}
+.survey-search:focus{border-color:var(--accent)}
+.search-wrap-survey{position:relative;margin-bottom:10px}
+
+
+
+/* PRODUCT LIST ROWS */
+.product-list{border:0.5px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;background:var(--card)}
+.product-row{border-bottom:0.5px solid var(--border);padding:8px 10px}
+.product-row:last-child{border-bottom:none}
+.product-row-line1{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:5px}
+.product-row-line2{display:flex;align-items:center;justify-content:flex-end;gap:6px}
+.product-row-name{flex:1;font-size:13px;font-weight:500;color:var(--text);line-height:1.3}
+.product-row-ref{font-size:11px;color:var(--muted);white-space:nowrap;flex-shrink:0}
+.product-row-ref span{color:var(--accent);font-weight:600}
+.price-input{width:80px;height:34px;border:0.5px solid var(--border);border-radius:6px;padding:0 6px;font-size:13px;background:var(--bg);outline:none;color:var(--text);text-align:right}
 .price-input:focus{border-color:var(--accent)}
-.currency-tag{font-size:10px;color:var(--accent);font-weight:600;background:var(--accent-light);padding:2px 5px;border-radius:4px;white-space:nowrap}
-.priceoff-input{width:100%;height:28px;border:0.5px solid var(--border);border-radius:6px;padding:0 6px;font-size:11px;background:var(--bg);outline:none;color:var(--muted)}
-.stock-btns{display:flex;flex-direction:column;gap:4px;margin-top:4px}
-.stock-btn{width:100%;height:30px;border-radius:6px;border:0.5px solid var(--border);background:var(--bg);font-size:11px;font-weight:500;cursor:pointer;color:var(--muted);font-family:inherit}
+.currency-tag{font-size:10px;color:var(--accent);font-weight:600;background:var(--accent-light);padding:2px 5px;border-radius:4px;white-space:nowrap;flex-shrink:0}
+.priceoff-input-inline{width:90px;height:34px;border:0.5px solid var(--border);border-radius:6px;padding:0 6px;font-size:12px;background:var(--bg);outline:none;color:var(--muted);text-align:right}
+.priceoff-input-inline:focus{border-color:var(--accent)}
+
+/* STOCK ROW */
+.stock-status-btns{display:flex;gap:4px;flex-shrink:0}
+.stock-btn{height:30px;padding:0 8px;border-radius:6px;border:0.5px solid var(--border);background:var(--bg);font-size:11px;font-weight:500;cursor:pointer;color:var(--muted);font-family:inherit;white-space:nowrap}
 .stock-btn.ok.active{background:var(--ok-bg);border-color:var(--ok-border);color:var(--ok-text)}
 .stock-btn.low.active{background:var(--low-bg);border-color:var(--low-border);color:var(--low-text)}
 .stock-btn.oos.active{background:var(--oos-bg);border-color:var(--oos-border);color:var(--oos-text)}
+.stock-comment{margin-top:5px;width:100%;height:28px;border:0.5px solid var(--border);border-radius:6px;padding:0 8px;font-size:12px;background:var(--bg);outline:none;color:var(--muted);font-family:inherit}
+.stock-comment:focus{border-color:var(--accent)}
 .comp-card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:10px;margin-bottom:8px;position:relative}
 .comp-delete{position:absolute;top:8px;right:8px;background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px}
 .comp-field{width:100%;height:36px;border:0.5px solid var(--border);border-radius:6px;padding:0 8px;font-size:13px;background:var(--card);outline:none;color:var(--text);margin-bottom:6px;font-family:inherit;appearance:none}
+.comp-brand-search{width:100%;height:36px;border:0.5px solid var(--border);border-radius:6px;padding:0 8px;font-size:13px;background:var(--card);outline:none;color:var(--text);margin-bottom:4px;font-family:inherit}
+.comp-brand-search:focus{border-color:var(--accent)}
+.comp-brand-list{display:none;background:var(--card);border:0.5px solid var(--border);border-radius:6px;max-height:140px;overflow-y:auto;margin-bottom:6px}
+.comp-brand-list.open{display:block}
+.comp-brand-item{padding:8px 10px;font-size:13px;cursor:pointer;border-bottom:0.5px solid var(--border);color:var(--text)}
+.comp-brand-item:last-child{border-bottom:none}
+.comp-brand-item:hover{background:var(--accent-light);color:var(--accent)}
+.comp-brand-selected{display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);color:var(--accent);border-radius:20px;padding:3px 10px;font-size:12px;font-weight:500;margin-bottom:6px}
+.comp-brand-selected button{background:none;border:none;color:var(--accent);cursor:pointer;font-size:14px;line-height:1}
 .comp-field:focus{border-color:var(--accent)}
 .comp-row{display:flex;gap:6px}
 .comp-row .comp-field{flex:1;margin-bottom:0}
@@ -82,12 +109,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .tab{flex:1;height:40px;background:none;border:none;font-size:14px;font-weight:500;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;font-family:inherit}
 .tab.active{color:var(--accent);border-bottom-color:var(--accent)}
 #scrLogin{display:none;padding:0;min-height:100vh;background:#fff}
-#scrLogin.active{display:flex;flex-direction:column;justify-content:center;padding:32px 16px}
+#scrLogin.active{display:flex;flex-direction:column;justify-content:flex-start;padding:16px 16px 32px}
 .login-logo{text-align:center;margin-bottom:32px}
-.login-logo .logo-img{width:160px;height:auto;display:block;margin:0 auto 14px}
+.login-logo .logo-img{width:180px;height:auto;display:block;margin:0 auto 10px}
 .login-logo h1{font-size:20px;font-weight:700;color:var(--text)}
 .login-logo p{font-size:13px;color:var(--muted);margin-top:4px}
+.app-version{text-align:center;font-size:11px;color:var(--muted);margin-top:24px}
 .error-msg{color:#A32D2D;font-size:13px;text-align:center;margin-top:8px;display:none}
+.report-warning{display:none;background:#fff8e1;border:1px solid #F59E0B;border-radius:var(--radius-sm);padding:10px 12px;margin-top:10px;font-size:13px;color:#854F0B;line-height:1.5}
+.report-warning.show{display:block}
 .success-wrap{text-align:center;padding:32px 0}
 .success-circle{width:64px;height:64px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:32px}
 .success-wrap h2{font-size:20px;font-weight:700;margin-bottom:6px}
@@ -120,6 +150,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div id="loginError" class="error-msg"></div>
   <br/>
   <button class="btn-primary" onclick="doLogin()">Sign in</button>
+  <div class="app-version">v1.7</div>
 </div>
 
 <!-- SLOT -->
@@ -128,15 +159,23 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="screen-title">Context</div>
     <span class="step-label">Step 1 / 4</span>
   </div>
+  <div class="welcome-card">
+    <div class="welcome-name" id="welcomeName">👋 Welcome</div>
+    <div class="welcome-company" id="welcomeCompany"></div>
+  </div>
   <div class="card">
     <div class="card-label">Session details</div>
     <div class="field">
       <label>Brand</label>
-      <select id="ddBrand" onchange="onBrandChange()"><option value="">— Select brand —</option></select>
+      <input type="text" id="brandSearch" placeholder="Type to search brand…" oninput="filterBrands()" autocomplete="off"
+        style="width:100%;height:44px;border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:0 12px;font-size:14px;color:var(--text);background:var(--bg);outline:none;font-family:inherit"/>
+      <div id="brandList" style="display:none;background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius-sm);max-height:200px;overflow-y:auto;position:relative;z-index:10"></div>
+      <div id="brandSelected"></div>
     </div>
     <div class="field"><label>Date</label><input type="date" id="dpDate"/></div>
     <div class="field"><label>Sector</label><select id="ddSector" onchange="onSectorChange()"><option value="">— Select sector —</option></select></div>
     <div class="field"><label>Store</label><select id="ddStore" disabled><option value="">— Select store —</option></select></div>
+    <div class="report-warning" id="reportWarning">⚠️ <strong>A report already exists</strong> for this store and brand this month.<br/><span id="reportWarningDetail"></span><br/>You can still continue if needed.</div>
   </div>
   <button class="btn-primary" id="btnSlotNext" disabled onclick="goTo('scrMerch')">Next →</button>
 </div>
@@ -167,7 +206,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div id="panelPrice">
     <div class="card">
       <div class="card-label">Our products</div>
-      <div class="gallery-grid" id="priceGrid"></div>
+      <div class="search-wrap-survey"><input class="survey-search" type="text" placeholder="Search product…" oninput="filterPriceList(this.value)" id="priceSearch"/></div>
+      <div class="product-list" id="priceGrid"></div>
       <div id="priceNoItems" style="display:none;font-size:13px;color:var(--muted);text-align:center;padding:8px 0">Select a brand first.</div>
     </div>
     <div class="card">
@@ -179,7 +219,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div id="panelStock" style="display:none">
     <div class="card">
       <div class="card-label">Stock status</div>
-      <div class="gallery-grid" id="stockGrid"></div>
+      <div class="search-wrap-survey"><input class="survey-search" type="text" placeholder="Search product…" oninput="filterStockList(this.value)" id="stockSearch"/></div>
+      <div class="product-list" id="stockGrid"></div>
       <div id="stockNoItems" style="display:none;font-size:13px;color:var(--muted);text-align:center;padding:8px 0">Select a brand first.</div>
     </div>
   </div>
@@ -195,15 +236,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <h2>Report submitted!</h2>
     <p>All data saved successfully.</p>
     <div class="card" style="text-align:left">
+      <div class="summary-row"><span>Submitted by</span><span id="sumBy" style="color:var(--accent)">—</span></div>
       <div class="summary-row"><span>Date</span><span id="sumDate">—</span></div>
       <div class="summary-row"><span>Store</span><span id="sumStore">—</span></div>
       <div class="summary-row"><span>Brand</span><span id="sumBrand">—</span></div>
       <div class="summary-row"><span>Merch zones</span><span id="sumZones">—</span></div>
+      <div class="summary-row"><span>Competitors</span><span id="sumComps">—</span></div>
       <div class="summary-row"><span>Products priced</span><span id="sumPriced">—</span></div>
       <div class="summary-row" style="border:none"><span>Stock statuses</span><span id="sumStock">—</span></div>
     </div>
     <br/>
-    <button class="btn-primary" onclick="resetApp()">+ New report</button>
+    <button class="btn-primary" onclick="resetApp()" style="margin-bottom:10px">+ New report</button>
+    <button class="btn-outline" onclick="changeStore()" style="height:50px;font-size:15px;font-weight:600;border:1.5px solid var(--accent);color:var(--accent);border-radius:var(--radius-sm);width:100%;background:var(--card);cursor:pointer;font-family:inherit">↺ Change store</button>
   </div>
 </div>
 
@@ -212,28 +256,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 const SUPA_URL  = 'https://qooytgsjjzvkqaumoqmw.supabase.co';
 const SUPA_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFvb3l0Z3Nqanp2a3FhdW1vcW13Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjUzNjM0ODMsImV4cCI6MjA0MDkzOTQ4M30.Oai2A8Qii0aOfD91NFwHsNq3Tgq1yFHwih-GRFnsEC0';
 
-// All price columns with their currency and label
-const PRICE_COLS = [
-  { col: 'Price CHF Lagardère', cur: 'CHF', label: 'CHF Lagardère' },
-  { col: 'Price EUR Lagardère', cur: 'EUR', label: 'EUR Lagardère' },
-  { col: 'Price CHF Avolta',    cur: 'CHF', label: 'CHF Avolta' },
-  { col: 'Price EUR Avolta',    cur: 'EUR', label: 'EUR Avolta' },
-  { col: 'Price EUR Avolta SP', cur: 'EUR', label: 'EUR Avolta SP' },
-  { col: 'Price GBP',           cur: 'GBP', label: 'GBP' },
-  { col: 'Price EUR ARI',       cur: 'EUR', label: 'EUR ARI' },
-  { col: 'Price CH Dom',        cur: 'CHF', label: 'CHF Dom' },
-  { col: 'Price Kč Lagardère',  cur: 'Kč',  label: 'Kč Lagardère' },
-  { col: 'Price zł Lagardère',  cur: 'zł',  label: 'zł Lagardère' },
-];
-
-// Retailer id → preferred price col index
-const RETAILER_COL = { 1:0, 8:1, 2:3, 11:4, 4:5, 5:6, 10:7 };
+// Price columns loaded from DB per retailer
+// retailerPriceCols[retailer_id] = [{ col, cur, label }, ...]
+let retailerPriceCols = {};
 
 const S = {
   promoter:null, date:'', sectorId:null, sectorName:'',
   storeId:null, storeName:'', retailerId:null,
   brandGuid:'', brandName:'',
-  priceColIdx:0,   // index into PRICE_COLS for our products
+  priceCol:null,   // { col, cur, label } for our products — loaded from retailer_price_columns
   zones:[], price:[], stock:[], reportId:null
 };
 
@@ -300,6 +331,16 @@ async function loadSlotData(){
   S.date=document.getElementById('dpDate').value;
   document.getElementById('dpDate').addEventListener('change',e=>{S.date=e.target.value;});
 
+  // Welcome message
+  const firstName = S.promoter.full_name ? S.promoter.full_name.split(' ')[0] : '';
+  document.getElementById('welcomeName').textContent = '👋 Welcome, ' + firstName;
+  if(S.promoter.company_id){
+    try{
+      const co = await sbGet('GI_company?id=eq.'+S.promoter.company_id+'&select=name&limit=1');
+      document.getElementById('welcomeCompany').textContent = co.length ? co[0].name : '';
+    }catch(e){}
+  }
+
   const cid=S.promoter.company_id;
   allSectors=cid
     ?await sbGet('Sector?companyid=eq.'+cid+'&select=id,Name&order=Name.asc')
@@ -310,11 +351,17 @@ async function loadSlotData(){
 
   allStores=await sbGet('GI_stores?select=id,store,Sector_id,retailer_id&visible=eq.true&order=store.asc');
 
-  // Brand dropdown
+  // Brand search list
   allBrands=await sbGet('GI_brands?visible=eq.true&select=guid,brand&order=brand.asc');
-  const ddB=document.getElementById('ddBrand');
-  ddB.innerHTML='<option value="">— Select brand —</option>';
-  allBrands.forEach(b=>{const o=document.createElement('option');o.value=b.guid+'|'+b.brand;o.textContent=b.brand;ddB.appendChild(o);});
+  // Do NOT call renderBrandList here — list stays hidden until user types
+
+  // Load all retailer price columns from DB
+  const rpcRows = await sbGet('retailer_price_columns?select=retailer_id,price_column,currency,label&order=retailer_id.asc');
+  retailerPriceCols = {};
+  rpcRows.forEach(r => {
+    if (!retailerPriceCols[r.retailer_id]) retailerPriceCols[r.retailer_id] = [];
+    retailerPriceCols[r.retailer_id].push({ col: r.price_column, cur: r.currency, label: r.label });
+  });
 
   // Competitor brands from legacy_items
   const liItems=await sbGet('legacy_items?select=brand&visible=eq.true&order=brand.asc');
@@ -322,11 +369,33 @@ async function loadSlotData(){
   liItems.forEach(i=>{if(i.brand&&!seen.has(i.brand)){seen.add(i.brand);allCompBrands.push(i.brand);}});
 }
 
-function onBrandChange(){
-  const val=document.getElementById('ddBrand').value;
-  if(!val){S.brandGuid='';S.brandName='';checkSlotNext();return;}
-  const [guid,...rest]=val.split('|'); S.brandGuid=guid; S.brandName=rest.join('|');
+function toTitleCase(str){
+  return str.toLowerCase().replace(/\b\w/g, c=>c.toUpperCase());
+}
+function renderBrandList(q){
+  const list=document.getElementById('brandList');
+  const f=q?allBrands.filter(b=>b.brand.toLowerCase().includes(q.toLowerCase())):allBrands;
+  if(!f.length){list.style.display='none';return;}
+  list.style.display='block';
+  list.innerHTML=f.slice(0,60).map(function(b){
+    const safeGuid=b.guid;
+    const safeName=b.brand.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    return '<div onclick="selectBrand(\'' +safeGuid+ '\',\'' +safeName+ '\')" style="padding:10px 12px;font-size:14px;cursor:pointer;border-bottom:0.5px solid var(--border);color:var(--text)">'+toTitleCase(b.brand)+'</div>';
+  }).join('');
+}
+function filterBrands(){
+  const q=document.getElementById('brandSearch').value;
+  if(q.length>0) renderBrandList(q);
+  else document.getElementById('brandList').style.display='none';
+}
+function openBrandList(){if(document.getElementById('brandSearch').value) renderBrandList(document.getElementById('brandSearch').value);}
+function selectBrand(guid,name){
+  S.brandGuid=guid; S.brandName=name;
+  document.getElementById('brandSearch').value=toTitleCase(name);
+  document.getElementById('brandList').style.display='none';
+  document.getElementById('brandSelected').innerHTML='';
   checkSlotNext();
+  checkExistingReport();
   if(S.storeId) loadItems();
 }
 
@@ -347,11 +416,41 @@ document.getElementById('ddStore').addEventListener('change',function(){
   const id=parseInt(this.value)||null;
   const s=allStores.find(x=>x.id===id);
   S.storeId=id;S.storeName=s?.store||'';S.retailerId=s?.retailer_id||null;
-  // Set preferred price column based on retailer
-  S.priceColIdx=RETAILER_COL[S.retailerId]??0;
+  // Set preferred price column based on retailer (first col for that retailer)
+  const cols = retailerPriceCols[S.retailerId] || [{ col: 'Price EUR Lagardère', cur: 'EUR', label: 'EUR' }];
+  S.priceCol = cols[0];
   checkSlotNext();
+  checkExistingReport();
   if(S.brandGuid) loadItems();
 });
+
+async function checkExistingReport(){
+  const warning=document.getElementById('reportWarning');
+  const detail=document.getElementById('reportWarningDetail');
+  warning.classList.remove('show');
+  if(!S.storeId||!S.brandGuid) return;
+  try{
+    const now=new Date();
+    const monthStart=now.getFullYear()+'-'+(String(now.getMonth()+1).padStart(2,'0'))+'-01';
+    const today=now.toISOString().split('T')[0];
+    const rows=await sbGet(
+      'ba_reports?store_id=eq.'+S.storeId+
+      '&brand_guid=eq.'+S.brandGuid+
+      '&report_date=gte.'+monthStart+
+      '&report_date=lte.'+today+
+      '&select=report_date,promoter_id&order=report_date.desc&limit=1'
+    );
+    if(rows.length){
+      let byName=rows[0].promoter_id||'';
+      try{
+        const prom=await sbGet('GI_promoters?id=eq.'+rows[0].promoter_id+'&select=full_name&limit=1');
+        if(prom.length&&prom[0].full_name) byName=prom[0].full_name;
+      }catch(e){}
+      detail.textContent='Last submitted: '+rows[0].report_date+' by '+byName;
+      warning.classList.add('show');
+    }
+  }catch(e){console.error('checkExistingReport',e);}
+}
 
 function checkSlotNext(){
   document.getElementById('btnSlotNext').disabled=!(S.date&&S.sectorId&&S.storeId&&S.brandGuid);
@@ -361,22 +460,24 @@ function checkSlotNext(){
 async function loadItems(){
   if(!S.brandName) return;
   try{
-    const pc=PRICE_COLS[S.priceColIdx];
-    const colEnc=encodeURIComponent(pc.col);
-    // Fetch all price cols to show reference prices
-    const colList=['id','name','full_productname',
-      'Price CHF Lagardère','Price EUR Lagardère','Price CHF Avolta','Price EUR Avolta',
-      'Price EUR Avolta SP','Price GBP','Price EUR ARI','Price CH Dom'].map(encodeURIComponent).join(',');
-    allItems=await sbGet('legacy_items?brand=eq.'+encodeURIComponent(S.brandName)+'&visible=eq.true&select='+colList+'&order=name.asc');
-    // Init price — use store's price col as default, pre-fill if exists
-    S.price=allItems.map(i=>({
-      itemId:i.id, name:i.full_productname||i.name,
-      price:i[pc.col]!=null?String(i[pc.col]):'',
-      refPrice:i[pc.col]!=null?i[pc.col]:null,
-      currency:pc.cur, priceOff:'', isCompetitor:false, brand:S.brandName
+    const pc = S.priceCol || { col: 'Price EUR Lagardère', cur: 'EUR', label: 'EUR' };
+    // Build select cols: base + all price cols for this retailer from DB
+    const retailerCols = retailerPriceCols[S.retailerId] || [pc];
+    const baseCols = ['id','name','full_productname'].map(encodeURIComponent).join(',');
+    const priceCols = retailerCols.map(r => encodeURIComponent(r.col)).join(',');
+    const colList = baseCols + ',' + priceCols;
+    // Only products with a non-null price in the primary retailer column
+    const colFilter = encodeURIComponent(pc.col);
+    allItems = await sbGet('legacy_items?brand=eq.'+encodeURIComponent(S.brandName)+'&visible=eq.true&'+colFilter+'=not.is.null&select='+colList+'&order=name.asc');
+    // Init price — pre-fill with reference price
+    S.price = allItems.map(i => ({
+      itemId: i.id, name: i.full_productname||i.name,
+      price: i[pc.col]!=null ? String(i[pc.col]) : '',
+      refPrice: i[pc.col]!=null ? i[pc.col] : null,
+      currency: pc.cur, priceOff: '', isCompetitor: false, brand: S.brandName
     }));
-    // Init stock — default OK for all
-    S.stock=allItems.map(i=>({itemId:i.id,name:i.full_productname||i.name,status:'ok'}));
+    // Init stock — default OK
+    S.stock = allItems.map(i => ({ itemId: i.id, name: i.full_productname||i.name, status: 'ok' }));
     renderPriceGrid(); renderStockGrid();
   }catch(e){console.error('loadItems',e);}
 }
@@ -415,23 +516,32 @@ function switchTab(tab){
 }
 
 // ── PRICE SURVEY ──────────────────────────
-function renderPriceGrid(){
+function renderPriceGrid(filter){
   const grid=document.getElementById('priceGrid');
   const noItems=document.getElementById('priceNoItems');
-  const ours=S.price.filter(p=>!p.isCompetitor);
+  const ours=S.price.map((p,i)=>({...p,idx:i})).filter(p=>!p.isCompetitor);
   if(!ours.length){grid.innerHTML='';noItems.style.display='block';return;}
   noItems.style.display='none';
-  const pc=PRICE_COLS[S.priceColIdx];
-  grid.innerHTML=ours.map((p,i)=>
-    '<div class="product-card">'+
-    '<div class="product-name">'+p.name+'</div>'+
-    '<div class="ref-price">Ref: <span>'+(p.refPrice!=null?p.refPrice+' '+pc.cur:'—')+'</span></div>'+
-    '<div class="price-row"><input class="price-input" type="number" inputmode="decimal" placeholder="Actual" value="'+p.price+'" oninput="S.price['+i+'].price=this.value" step="0.01" min="0"/><span class="currency-tag">'+p.currency+'</span></div>'+
-    '<input class="priceoff-input" type="text" placeholder="Promo/off…" value="'+p.priceOff+'" oninput="S.price['+i+'].priceOff=this.value"/>'+
+  const pc = S.priceCol || { col: 'Price EUR Lagardère', cur: 'EUR', label: 'EUR' };
+  const q = (filter||'').toLowerCase();
+  const visible = q ? ours.filter(p=>p.name.toLowerCase().includes(q)) : ours;
+  if(!visible.length){grid.innerHTML='<div style="padding:12px;font-size:13px;color:var(--muted);text-align:center">No products match.</div>';return;}
+  grid.innerHTML = visible.map(p=>
+    '<div class="product-row">'+
+    '<div class="product-row-line1">'+
+    '<span class="product-row-name">'+p.name+'</span>'+
+    '<span class="product-row-ref">Ref: <span>'+(p.refPrice!=null?p.refPrice+' '+pc.cur:'—')+'</span></span>'+
+    '</div>'+
+    '<div class="product-row-line2">'+
+    '<input class="price-input" type="number" inputmode="decimal" placeholder="Price" value="'+p.price+'" oninput="S.price['+p.idx+'].price=this.value" step="0.01" min="0"/>'+
+    '<span class="currency-tag">'+p.currency+'</span>'+
+    '<input class="priceoff-input-inline" type="text" placeholder="Promo/off…" value="'+p.priceOff+'" oninput="S.price['+p.idx+'].priceOff=this.value"/>'+
+    '</div>'+
     '</div>'
   ).join('');
   renderCompetitors();
 }
+function filterPriceList(q){renderPriceGrid(q);}
 
 // ── COMPETITORS ───────────────────────────
 let compState={}; // idx -> { colIdx, products }
@@ -443,12 +553,24 @@ async function addCompetitor(){
   renderCompetitors();
 }
 
-async function onCompBrandChange(idx){
-  const sel=document.getElementById('compBrand_'+idx);
-  const brand=sel?sel.value:'';
+function filterCompBrands(idx){
+  const q=document.getElementById('compBrandSearch_'+idx)?.value||'';
+  const list=document.getElementById('compBrandList_'+idx);
+  if(!list) return;
+  if(!q){list.classList.remove('open');return;}
+  const f=allCompBrands.filter(b=>b.toLowerCase().includes(q.toLowerCase()));
+  list.innerHTML=f.slice(0,40).map(b=>
+    '<div class="comp-brand-item" onclick="selectCompBrand('+idx+',\''+b.replace(/'/g,"\\'")+'\')">'+ toTitleCase(b) +'</div>'
+  ).join('');
+  list.classList.add('open');
+}
+async function selectCompBrand(idx, brand){
   S.price[idx].brand=brand;
+  const input=document.getElementById('compBrandSearch_'+idx);
+  if(input){input.value=toTitleCase(brand);}
+  const list=document.getElementById('compBrandList_'+idx);
+  if(list) list.classList.remove('open');
   if(!brand){compState[idx]={colIdx:compState[idx]?.colIdx||0,products:[]};renderCompetitors();return;}
-  // Load products for competitor brand with all price cols
   try{
     const cols=['id','name','full_productname',
       'Price CHF Lagardère','Price EUR Lagardère','Price CHF Avolta','Price EUR Avolta',
@@ -459,6 +581,9 @@ async function onCompBrandChange(idx){
   }catch(e){console.error(e);}
 }
 
+function getAllPriceCols(){
+  return Object.values(retailerPriceCols).flat().filter((v,i,a)=>a.findIndex(x=>x.col===v.col)===i);
+}
 function onCompColChange(idx){
   const sel=document.getElementById('compCol_'+idx);
   if(!sel) return;
@@ -472,18 +597,19 @@ function renderCompetitors(){
   if(!comps.length){c.innerHTML='';return;}
   c.innerHTML=comps.map(p=>{
     const cs=compState[p.idx]||{colIdx:0,products:[]};
-    const pc=PRICE_COLS[cs.colIdx];
+    const allCols=getAllPriceCols(); const pc=allCols[cs.colIdx]||allCols[0]||{col:'Price EUR Lagardère',cur:'EUR',label:'EUR'};
     // Filter products that have a price in the selected col
     const prods=cs.products.filter(pr=>pr[pc.col]!=null);
     return '<div class="comp-card">'+
       '<button class="comp-delete" onclick="removeComp('+p.idx+')">×</button>'+
-      '<select id="compBrand_'+p.idx+'" class="comp-field" onchange="onCompBrandChange('+p.idx+')">'+
-      '<option value="">— Competitor brand —</option>'+
-      allCompBrands.map(b=>'<option value="'+b+'"'+(p.brand===b?' selected':'')+'>'+b+'</option>').join('')+
-      '</select>'+
+      (p.brand?
+        '<div class="comp-brand-selected">'+toTitleCase(p.brand)+' <button onclick="clearCompBrand('+p.idx+')">×</button></div>'
+        :'<input id="compBrandSearch_'+p.idx+'" class="comp-brand-search" type="text" placeholder="Search competitor brand…" oninput="filterCompBrands('+p.idx+')" autocomplete="off" value=""/>'+
+        '<div id="compBrandList_'+p.idx+'" class="comp-brand-list"></div>'
+      )+
       (p.brand?
         '<select id="compCol_'+p.idx+'" class="comp-field" onchange="onCompColChange('+p.idx+')">'+
-        PRICE_COLS.map((pc,ci)=>'<option value="'+ci+'"'+(cs.colIdx===ci?' selected':'')+'>'+pc.label+'</option>').join('')+
+        (()=>{const allCols=Object.values(retailerPriceCols).flat().filter((v,i,a)=>a.findIndex(x=>x.col===v.col)===i);return allCols.map((pc,ci)=>'<option value="'+ci+'"'+(cs.colIdx===ci?' selected':'')+'>'+pc.label+'</option>').join('');})() +
         '</select>'+
         (prods.length>0?
           '<div class="comp-products-list">'+
@@ -512,6 +638,11 @@ function setCompProdPrice(compIdx,prodId,val,nameEnc,cur){
   }
 }
 
+function clearCompBrand(idx){
+  S.price[idx].brand='';
+  compState[idx]={colIdx:0,products:[]};
+  renderCompetitors();
+}
 function removeComp(idx){
   // Remove from S.price all entries with this comp brand that were added via this slot
   const brand=S.price[idx]?.brand;
@@ -526,22 +657,29 @@ function removeComp(idx){
 }
 
 // ── STOCK SURVEY ──────────────────────────
-function renderStockGrid(){
+function renderStockGrid(filter){
   const grid=document.getElementById('stockGrid');
   const noItems=document.getElementById('stockNoItems');
   if(!S.stock.length){grid.innerHTML='';noItems.style.display='block';return;}
   noItems.style.display='none';
-  grid.innerHTML=S.stock.map((s,i)=>
-    '<div class="product-card">'+
-    '<div class="product-name">'+s.name+'</div>'+
-    '<div class="stock-btns">'+
-    '<button class="stock-btn ok'+(s.status==='ok'?' active':'')+'" onclick="setStock('+i+',\'ok\')">✓ OK</button>'+
-    '<button class="stock-btn low'+(s.status==='low'?' active':'')+'" onclick="setStock('+i+',\'low\')">⚠ Low</button>'+
-    '<button class="stock-btn oos'+(s.status==='oos'?' active':'')+'" onclick="setStock('+i+',\'oos\')">✗ OOS</button>'+
-    '</div></div>'
+  const q=(filter||'').toLowerCase();
+  const visible=q?S.stock.map((s,i)=>({...s,i})).filter(s=>s.name.toLowerCase().includes(q)):S.stock.map((s,i)=>({...s,i}));
+  if(!visible.length){grid.innerHTML='<div style="padding:12px;font-size:13px;color:var(--muted);text-align:center">No products match.</div>';return;}
+  grid.innerHTML=visible.map(s=>
+    '<div class="product-row">'+
+    '<div class="product-row-main">'+
+    '<span class="product-row-name">'+s.name+'</span>'+
+    '<div class="stock-status-btns">'+
+    '<button class="stock-btn ok'+(s.status==='ok'?' active':'')+'" onclick="setStock('+s.i+',\'ok\')">✓ OK</button>'+
+    '<button class="stock-btn low'+(s.status==='low'?' active':'')+'" onclick="setStock('+s.i+',\'low\')">⚠ Low</button>'+
+    '<button class="stock-btn oos'+(s.status==='oos'?' active':'')+'" onclick="setStock('+s.i+',\'oos\')">✗ OOS</button>'+
+    '</div></div>'+
+    '<input class="stock-comment" type="text" placeholder="Comment (optional)…" value="'+(s.comment||'')+'" oninput="S.stock['+s.i+'].comment=this.value"/>'+
+    '</div>'
   ).join('');
 }
-function setStock(i,status){S.stock[i].status=S.stock[i].status===status?'ok':status;renderStockGrid();}
+function filterStockList(q){renderStockGrid(q);}
+function setStock(i,status){S.stock[i].status=S.stock[i].status===status?'ok':status;renderStockGrid(document.getElementById('stockSearch')?.value||'');}
 
 // ── SUBMIT ────────────────────────────────
 async function doSubmit(){
@@ -556,11 +694,14 @@ async function doSubmit(){
     const priceRows=S.price.filter(p=>p.price!=='');
     if(priceRows.length) await sbPostMany('ba_price_survey',priceRows.map(p=>({report_id:rid,item_id:p.itemId||null,product_name:p.name||null,brand:p.brand||S.brandName,is_competitor:!!p.isCompetitor,price:parseFloat(p.price),currency:p.currency||'EUR',price_off:p.priceOff||null})));
     const stockRows=S.stock.filter(s=>s.status!=='');
-    if(stockRows.length) await sbPostMany('ba_stock_survey',stockRows.map(s=>({report_id:rid,item_id:s.itemId,product_name:s.name,stock_qty:s.status==='ok'?1:s.status==='low'?2:0,comments:s.status.toUpperCase()})));
+    if(stockRows.length) await sbPostMany('ba_stock_survey',stockRows.map(s=>({report_id:rid,item_id:s.itemId,product_name:s.name,stock_qty:s.status==='ok'?1:s.status==='low'?2:0,comments:s.comment||s.status.toUpperCase()})));
+    document.getElementById('sumBy').textContent=S.promoter.full_name||S.promoter.email;
     document.getElementById('sumDate').textContent=S.date;
     document.getElementById('sumStore').textContent=S.storeName;
     document.getElementById('sumBrand').textContent=S.brandName;
+    const compRows=S.price.filter(p=>p.isCompetitor&&p.price!=='');
     document.getElementById('sumZones').textContent=S.zones.length;
+    document.getElementById('sumComps').textContent=compRows.length;
     document.getElementById('sumPriced').textContent=priceRows.length;
     document.getElementById('sumStock').textContent=stockRows.length;
     loader(false);goTo('scrSuccess');
@@ -573,20 +714,68 @@ async function doSubmit(){
 }
 
 // ── RESET ─────────────────────────────────
+function changeStore(){
+  // Keep: promoter, brand, date, sector
+  // Reset: store, zones, price (own products), stock, competitors
+  S.storeId=null; S.storeName=''; S.retailerId=null; S.priceCol=null;
+  S.zones=[]; S.stock=[]; S.reportId=null;
+  allItems=[]; compState={};
+  // Keep only non-competitor price entries structure but clear values
+  S.price=[];
+
+  // Reset store dropdown but keep sector selected
+  const ddStore=document.getElementById('ddStore');
+  ddStore.innerHTML='<option value="">— Select store —</option>';
+  ddStore.disabled=false;
+  const sId=S.sectorId;
+  allStores.filter(s=>s.Sector_id===sId).forEach(s=>{
+    const o=document.createElement('option');
+    o.value=s.id; o.textContent=s.store;
+    ddStore.appendChild(o);
+  });
+  ddStore.value='';
+
+  // Reset survey UI
+  document.getElementById('zoneList').innerHTML='';
+  document.getElementById('priceGrid').innerHTML='';
+  document.getElementById('stockGrid').innerHTML='';
+  document.getElementById('compList').innerHTML='';
+  document.getElementById('submitErr').style.display='none';
+  document.getElementById('btnSlotNext').disabled=true;
+  switchTab('price');
+  goTo('scrSlot');
+}
+
 function resetApp(){
-  S.date='';S.sectorId=null;S.sectorName='';S.storeId=null;S.storeName='';S.retailerId=null;
-  S.brandGuid='';S.brandName='';S.priceColIdx=0;S.zones=[];S.price=[];S.stock=[];S.reportId=null;
-  allItems=[];compState={};
-  document.getElementById('ddBrand').value='';
+  // Reset state
+  S.date=''; S.sectorId=null; S.sectorName='';
+  S.storeId=null; S.storeName=''; S.retailerId=null;
+  S.brandGuid=''; S.brandName=''; S.priceCol=null;
+  S.zones=[]; S.price=[]; S.stock=[]; S.reportId=null;
+  allItems=[]; compState={};
+
+  // Reset UI inputs
+  document.getElementById('brandSearch').value='';
+  document.getElementById('brandList').style.display='none';
+  document.getElementById('brandSelected').innerHTML='';
   document.getElementById('dpDate').value=new Date().toISOString().split('T')[0];
-  document.getElementById('ddSector').value='';
-  document.getElementById('ddStore').innerHTML='<option value="">— Select store —</option>';
-  document.getElementById('ddStore').disabled=true;
+  S.date=document.getElementById('dpDate').value;
+
+  // Reset sector & store dropdowns (repopulate from already-loaded data)
+  const ddS=document.getElementById('ddSector');
+  ddS.innerHTML='<option value="">— Select sector —</option>';
+  allSectors.forEach(s=>{const o=document.createElement('option');o.value=s.id;o.textContent=s.Name;ddS.appendChild(o);});
+
+  const ddStore=document.getElementById('ddStore');
+  ddStore.innerHTML='<option value="">— Select store —</option>';
+  ddStore.disabled=true;
+
   document.getElementById('btnSlotNext').disabled=true;
   document.getElementById('zoneList').innerHTML='';
   document.getElementById('priceGrid').innerHTML='';
   document.getElementById('stockGrid').innerHTML='';
   document.getElementById('compList').innerHTML='';
+  document.getElementById('submitErr').style.display='none';
   switchTab('price');
   goTo('scrSlot');
 }
